@@ -59,6 +59,17 @@
                         autocomplete="username"
                         required>
                 </div>
+                
+                <!-- dpi -->
+
+                <div class="input-container">
+                    <i class="bi bi-person-vcard"></i>
+                    <input
+                        type="text"
+                        name="dpi"
+                        placeholder="DPI"
+                        required>
+                </div>
 
                 <!-- correo -->
 
@@ -113,7 +124,7 @@
                 <--<!-- regresar a login normal -->
             <div class="login-link">
                 ¿Ya tienes una cuenta?
-                <a href="${pageContext.request.contextPath}/login.jsp"> Inicia sesión </a>
+                <a href="${pageContext.request.contextPath}/index.jsp"> Inicia sesión </a>
             </div>
         </div>
     </body>

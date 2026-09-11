@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS transporte_CodeBugs_guatemala;
 
+--AGREGADO
 CREATE TABLE sucursal (
     id_sucursal INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE,
@@ -8,23 +9,30 @@ CREATE TABLE sucursal (
     estado BOOLEAN NOT NULL DEFAULT TRUE
 );
 
---ARREGLAR AUN
+--AGREGADO
 
 CREATE TABLE usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+
+    dpi VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY, 
     nombre_completo VARCHAR(150) NOT NULL,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
     correo VARCHAR(120) NOT NULL UNIQUE,
     contrasena VARCHAR(255) NOT NULL,
-    nit VARCHAR(20),
-    dpi VARCHAR(20),
-    telefono VARCHAR(20),
-    direccion VARCHAR(200),
-    rol ENUM('ADMIN_SISTEMA','ADMIN_SUCURSAL','CLIENTE') NOT NULL,
+    nit VARCHAR(20) NOT NULL UNIQUE,
+    telefono VARCHAR(20) NOT NULL,
+    direccion VARCHAR(200) NOT NULL,
+    rol ENUM(
+        'ADMIN_SISTEMA',
+        'ADMIN_SUCURSAL',
+        'CLIENTE'
+    ) NOT NULL DEFAULT 'CLIENTE',
     id_sucursal INT NULL,
     estado BOOLEAN NOT NULL DEFAULT TRUE,
     CONSTRAINT fk_usuario_sucursal
-        FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal)
-        ON UPDATE CASCADE ON DELETE SET NULL
+        FOREIGN KEY (id_sucursal)
+        REFERENCES sucursal(id_sucursal)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
 );
 
 CREATE TABLE bus (
